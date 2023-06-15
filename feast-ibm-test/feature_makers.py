@@ -19,7 +19,7 @@ common_tags= {
 
 loan_entity = Entity(
     name="loan_entity",
-    join_keys=["loan_id"]
+    join_keys=["loan_id"] # Must to lower cases in this version
 )
 
 loan_source = Db2ServerSource(
