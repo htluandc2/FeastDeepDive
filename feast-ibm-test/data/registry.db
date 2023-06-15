@@ -1,0 +1,39 @@
+
+B
+"
+loan_entity"loan_idJ
+my_project
+úá©¤€òğÂúá©¤€òğÂ
+A
+!
+__dummy"
+__dummy_idJ
+my_project
+úá©¤øÛ”Ãúá©¤øÛ”Ã1"$ddc8fe37-f1d1-4560-9810-278816faebdb*è©¤˜‹ßw2“
+Ö
+loan_fv
+my_projectloan_entity"(
+person_home_ownership"City to which"
+
+person_age"City to which*
+ownerluanht1*
+teamops2€¼àß:²event_timestamp*created_timestamp‚Ì
+É{"table_ref": "loan", "connection_string": "db2://wdb82199:ghSwx3fNxkYczWoM@ba99a9e6-d59e-4883-8fc0-d6a8c9f7a08f.c1ogj3sd0tgtu0lqde00.databases.appdomain.cloud:31321/BLUDB;SECURITY=SSL;PROTOCOL=TCPIP"}Š+feast_ibm_db2.db2_fs_source.Db2ServerSource¢loan_source@b
+loan_id8
+úá©¤ˆÖ°Ãè©¤ğ¦ıp
+ì«ÉÄúÿÿÿÿøÙ¥†©ç©¤:’
+r
+feature_group_v1
+my_projectR
+loan_fv(
+person_home_ownership"City to which
+
+person_age"City to which
+úá©¤ÈôÄúá©¤ÈôÄR„
+
+,feast.infra.online_stores.sqlite.SqliteTable"Q
+;/home/ubuntu/test-feast/feast-ibm-test/data/online_store.dbmy_project_loan_fvb¿event_timestamp*created_timestamp‚Ì
+É{"table_ref": "loan", "connection_string": "db2://wdb82199:ghSwx3fNxkYczWoM@ba99a9e6-d59e-4883-8fc0-d6a8c9f7a08f.c1ogj3sd0tgtu0lqde00.databases.appdomain.cloud:31321/BLUDB;SECURITY=SSL;PROTOCOL=TCPIP"}Š+feast_ibm_db2.db2_fs_source.Db2ServerSource¢loan_sourceª
+my_projectz2
+
+my_project$919e6de0-be66-4729-a008-82445b9aa24a
