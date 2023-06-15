@@ -3,7 +3,7 @@ registry: data/registry.db
 provider: local
 offline_store:
   type: feast_ibm_db2.db2_fs.Db2ServerOfflineStore
-  connection_string: db2://wdb82199:ghSwx3fNxkYczWoM@ba99a9e6-d59e-4883-8fc0-d6a8c9f7a08f.c1ogj3sd0tgtu0lqde00.databases.appdomain.cloud:31321/BLUDB;SECURITY=SSL;PROTOCOL=TCPIP
+  connection_string: db2://user:hostname:port/dbname;SECURITY=SSL;PROTOCOL=TCPIP
 online_store:
   path: data/online_store.db
 entity_key_serialization_version: 2
