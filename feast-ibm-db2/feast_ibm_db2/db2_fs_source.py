@@ -31,15 +31,19 @@ def Db2_to_feast_value_type(mssql_type_as_str: str) -> ValueType:
         "nchar": ValueType.STRING,
         "nvarchar": ValueType.STRING,
         "nvarchar(max)": ValueType.STRING,
-        "real": ValueType.FLOAT,
+
         "smallint": ValueType.INT32,
         "tinyint": ValueType.INT32,
         "varbinary": ValueType.BYTES,
         "varchar": ValueType.STRING,
         "None": ValueType.NULL,
 
+        # DB2 special data types
         'INTEGER'.lower(): ValueType.INT32,
-        
+        'decimal': ValueType.FLOAT,
+        "real": ValueType.FLOAT,
+        "double": ValueType.DOUBLE,
+
         # skip date, geometry, hllsketch, time, timetz
     }
     print("Data type:", mssql_type_as_str.lower())
