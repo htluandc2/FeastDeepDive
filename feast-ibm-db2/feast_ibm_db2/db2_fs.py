@@ -37,14 +37,19 @@ from feast.saved_dataset import SavedDatasetStorage
 from feast.type_map import pa_to_mssql_type
 from feast.usage import log_exceptions_and_usage
 
+from sqlalchemy.types import String
+
 # Make sure warning doesn't raise more than once.
 warnings.simplefilter("once", RuntimeWarning)
 
 EntitySchema = Dict[str, np.dtype]
 
+MAX_VARCHAR_LEN = 255
+
 def pa_to_db2_type(pa_type: "pyarrow.DataType") -> str:
     # PyArrow types: https://arrow.apache.org/docs/python/api/datatypes.html
     # MS Sql types: https://docs.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+    # DB2 types: https://www.ibm.com/docs/en/db2-for-zos/12?topic=columns-data-types
     pa_type_as_str = str(pa_type).lower()
     if pa_type_as_str.startswith("timestamp"):
         if "tz=" in pa_type_as_str:
@@ -75,7 +80,7 @@ def pa_to_db2_type(pa_type: "pyarrow.DataType") -> str:
         "float": "float",
         "double": "real",
         "binary": "binary",
-        "string": "varchar",
+        "string": "varchar(%s)" % MAX_VARCHAR_LEN,
     }
 
     print("Check type:", pa_type_as_str.lower())
@@ -153,7 +158,7 @@ class Db2ServerOfflineStore(OfflineStore):
             ) outer_t
             WHERE outer_t."_feast_row" = 1
             """
-        print(query)
+        # print(query)
         engine = make_engine(config.offline_store)
 
         return Db2ServerRetrievalJob(
@@ -275,7 +280,7 @@ class Db2ServerOfflineStore(OfflineStore):
             query_template=MULTIPLE_FEATURE_VIEW_POINT_IN_TIME_JOIN,
         )
         query = query.replace("`", "")
-
+        print(query)
         job = Db2ServerRetrievalJob(
             query=query,
             engine=engine,
@@ -472,7 +477,11 @@ def _upload_entity_df_into_sqlserver_and_get_entity_schema(
     elif isinstance(entity_df, pandas.DataFrame):
         # Drop the index so that we don't have unnecessary columns
         engine.execute(_df_to_create_table_sql(entity_df, table_id))
-        entity_df.to_sql(name=table_id, con=engine, index=False, if_exists="append")
+        ## Issue: https://www.ibm.com/docs/en/db2-for-zos/12?topic=codes-134
+        # entity_df.to_sql(name=table_id, con=engine, index=False, if_exists="append")
+        cols = entity_df.dtypes[entity_df.dtypes=='object'].index
+        type_mapping = {col : String(MAX_VARCHAR_LEN) for col in cols}
+        entity_df.to_sql(name=table_id, con=engine, dtype=type_mapping, index=False, if_exists="append")
         entity_schema = dict(zip(entity_df.columns, entity_df.dtypes)), table_id
 
     else:

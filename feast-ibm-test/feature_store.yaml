@@ -3,7 +3,7 @@ registry: data/registry.db
 provider: local
 offline_store:
   type: feast_ibm_db2.db2_fs.Db2ServerOfflineStore
-  connection_string: db2://user:hostname:port/dbname;SECURITY=SSL;PROTOCOL=TCPIP
+  connection_string: db2://{dsn_uid}:{dsn_pwd}@{dsn_hostname}:{dsn_port}/{dsn_database};SECURITY=SSL;PROTOCOL=TCPIP
 online_store:
   path: data/online_store.db
 entity_key_serialization_version: 2
