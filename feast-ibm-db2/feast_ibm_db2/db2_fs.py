@@ -44,7 +44,7 @@ warnings.simplefilter("once", RuntimeWarning)
 
 EntitySchema = Dict[str, np.dtype]
 
-MAX_VARCHAR_LEN = 255
+MAX_VARCHAR_LEN = 127
 
 def pa_to_db2_type(pa_type: "pyarrow.DataType") -> str:
     # PyArrow types: https://arrow.apache.org/docs/python/api/datatypes.html
