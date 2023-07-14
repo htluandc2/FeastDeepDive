@@ -10,9 +10,5 @@ setup(
     long_descipriont_content_type="text/markdown",
     python_requires=REQUIRES_PYTHON,
     packages=find_packages(include=['feast_ibm_db2']),
-    install_requires=[
-        "feast==0.31.1"
-        "ibm-db",
-        "ibm-db-sa"
-    ]
+    install_requires=[]
 )
