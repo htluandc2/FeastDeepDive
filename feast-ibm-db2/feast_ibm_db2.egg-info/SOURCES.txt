@@ -3,7 +3,7 @@ setup.py
 feast_ibm_db2/__init__.py
 feast_ibm_db2/db2_fs.py
 feast_ibm_db2/db2_fs_source.py
-feast_ibm_db2/temp.py
+feast_ibm_db2/test.py
 feast_ibm_db2.egg-info/PKG-INFO
 feast_ibm_db2.egg-info/SOURCES.txt
 feast_ibm_db2.egg-info/dependency_links.txt

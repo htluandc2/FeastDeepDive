@@ -1,1 +1,3 @@
 feast==0.31.1
+ibm-db
+ibm-db-sa

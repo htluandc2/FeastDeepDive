@@ -280,7 +280,7 @@ class Db2ServerOfflineStore(OfflineStore):
             query_template=MULTIPLE_FEATURE_VIEW_POINT_IN_TIME_JOIN,
         )
         query = query.replace("`", "")
-        print(query)
+        # print(query)
         job = Db2ServerRetrievalJob(
             query=query,
             engine=engine,
